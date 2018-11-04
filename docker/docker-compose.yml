@@ -11,7 +11,7 @@ services:
             - nodeapp-network
             
     mongodb:
-        image: mongodb
+        image: mongo
         networks:
             - nodeapp-network
 
