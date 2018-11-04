@@ -31,12 +31,8 @@ services:
             - SPLUNK_START_ARGS=--accept-license
             - SPLUNK_PASSWORD=murraykatt12345
         volumes:
-            - type: bind
-                source: /data/splunk/etc
-                target: /opt/splunk/etc
-            - type: bind
-                source: /data/splunk/var
-                target: /opt/splunk/var
+            - "/data/splunk/etc:/opt/splunk/etc"
+            - "/data/splunk/var:/opt/splunk/var"
                     
 networks:
     nodeapp-network:
