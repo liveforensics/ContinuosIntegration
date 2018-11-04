@@ -1,20 +1,43 @@
-version: '2'
+version: '3'
 
 services:
-    node:
-        build:
-            context: .
-            dockerfile: node.dockerfile
-        ports:
-            - "10006:3000"
-        networks:
-            - nodeapp-network
+    # node:
+        # build:
+            # context: .
+            # dockerfile: node.dockerfile
+        # ports:
+            # - "10006:3000"
+        # networks:
+            # - nodeapp-network
             
-    mongodb:
-        image: mongo
+    # mongodb:
+        # image: mongo
+        # networks:
+            # - nodeapp-network
+
+    # docker run --name splunk -d --rm -p 10002:8000 -p 10005:8088 
+    # -e 'SPLUNK_START_ARGS=--accept-license' -e 'SPLUNK_PASSWORD=murraykatt12345' 
+    # -v /data/splunk/etc:/opt/splunk/etc -v /data/splunk/var:/opt/splunk/var 
+    # splunk/splunk:latest
+    splunktest:
+        image: splunk/splunk:latest
+        container_name: splunktest
         networks:
             - nodeapp-network
-
+        ports:
+            - "10002:8000"
+            - "10005:8088"
+        environment:
+            - SPLUNK_START_ARGS=--accept-license
+            - SPLUNK_PASSWORD=murraykatt12345
+        volumes:
+            - type: bind
+                source: /data/splunk/etc
+                target: /opt/splunk/etc
+            - type: bind
+                source: /data/splunk/var
+                target: /opt/splunk/var
+                    
 networks:
     nodeapp-network:
         driver: bridge
