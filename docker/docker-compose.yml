@@ -1,1 +1,23 @@
 // docker-compose
+
+version: '2'
+
+services:
+    node:
+        build:
+            context: .
+            dockerfile: node.dockerfile
+        ports:
+            - "3000:3000"
+        networks:
+            - nodeapp-network
+            
+    mongodb:
+        image: mongodb
+        networks:
+            - nodeapp-network
+
+networks:
+    nodeapp-network:
+        driver: bridge
+        
