@@ -14,7 +14,20 @@ services:
         # image: mongo
         # networks:
             # - nodeapp-network
-
+    # docker run -d --rm -p 10003:8080 -p 50000:50000 
+    # -v jenkins_home:/var/jenkins_home 
+    # --name jenkins 
+    # jenkinsci/blueocean
+    jenkinstest:
+        image: jenkinsci/blueocean
+        container_name: jenkinstest
+        networks:
+            - nodeapp-network
+        ports:
+            - "10003:8080"
+            - "50000:50000"
+        volumes:
+            - jenkins_home:/var/jenkins_home
     # docker run --name splunk -d --rm -p 10002:8000 -p 10005:8088 
     # -e 'SPLUNK_START_ARGS=--accept-license' -e 'SPLUNK_PASSWORD=murraykatt12345' 
     # -v /data/splunk/etc:/opt/splunk/etc -v /data/splunk/var:/opt/splunk/var 
