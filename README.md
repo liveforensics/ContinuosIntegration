@@ -1,2 +1,2 @@
-# ContinuosIntegration
+# Continuous Integration
 Just practicing
