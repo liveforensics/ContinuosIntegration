@@ -40,9 +40,9 @@ services:
     # -v jenkins_home:/var/jenkins_home 
     # --name jenkins 
     # jenkinsci/blueocean
-    jenkinstest:
+    jenkins:
         image: jenkinsci/blueocean
-        container_name: jenkinstest
+        container_name: jenkins
         networks:
             - nodeapp-network
         ports:
@@ -50,13 +50,24 @@ services:
             - "50000:50000"
         volumes:
             - jenkins_home:/var/jenkins_home
+
+    jenkinsreal:
+        image: jenkinsci/blueocean
+        container_name: jenkinsreal
+        networks:
+            - nodeapp-network
+        ports:
+            - "10008:8080"
+            - "50001:50000"
+        volumes:
+            - jenkinsreal_home:/var/jenkins_home            
     # docker run --name splunk -d --rm -p 10002:8000 -p 10005:8088 
     # -e 'SPLUNK_START_ARGS=--accept-license' -e 'SPLUNK_PASSWORD=murraykatt12345' 
     # -v /data/splunk/etc:/opt/splunk/etc -v /data/splunk/var:/opt/splunk/var 
     # splunk/splunk:latest
-    splunktest:
+    splunk:
         image: splunk/splunk:latest
-        container_name: splunktest
+        container_name: splunk
         networks:
             - nodeapp-network
         ports:
@@ -76,3 +87,4 @@ networks:
 volumes:
     jenkins_home:
     portainer_data:
+    jenkinsreal_home:
