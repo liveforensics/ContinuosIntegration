@@ -47,7 +47,7 @@ services:
             - nodeapp-network
         ports:
             - "10003:8080"
-            - "50000:50000"
+            - "50001:50000"
         volumes:
             - jenkins_home:/var/jenkins_home
 
@@ -58,7 +58,7 @@ services:
             - nodeapp-network
         ports:
             - "10008:8080"
-            - "50001:50000"
+            - "50000:50000"
         volumes:
             - jenkinsreal_home:/var/jenkins_home            
     # docker run --name splunk -d --rm -p 10002:8000 -p 10005:8088 
