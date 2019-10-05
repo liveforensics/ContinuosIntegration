@@ -11,7 +11,7 @@ pipeline {
     }
     stage('Call Test') {
       steps {
-        echo 'next part'
+        echo sh 'ls -ahl'
       }
     }
     // stage('Buildery') {
