@@ -6,7 +6,7 @@ pipeline {
     stage('Gittery') {
       steps {
         echo 'hello mark'
-        cleanWs()
+        //cleanWs()
       }
     }
     stage('Call Test') {
