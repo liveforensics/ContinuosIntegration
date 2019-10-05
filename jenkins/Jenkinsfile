@@ -2,14 +2,14 @@ echo 'welcome to my test pipeline'
 pipeline {
   agent any
     parameters {
-        string(name: 'GIT_PROJECT_NAME', defaultValue: 'empty', description: 'Which project would you like to build?')
-        string(name: 'GIT_BRANCH_NAME', defaultValue: 'Master', description: 'Which branch would you like to build?')
+        string(name: 'GIT_PROJECT_NAME', defaultValue: '', description: 'Which project would you like to build?')
+        string(name: 'GIT_BRANCH_NAME', defaultValue: 'master', description: 'Which branch would you like to build?')
         string(name: 'AUTHOR_NAME', defaultValue: 'wer', description: 'Please enter your name')
     }
   stages {
-    stage('Gittery') {
+    stage('Gitteryyy') {
       steps {
-        echo "git url is ${GIT_PROJECT_NAME}"
+        echo "git url is ${GIT_PROJECT_NAME}" 
         echo "git url is ${GIT_BRANCH_NAME}"
         echo "author is ${AUTHOR_NAME}"
         cleanWs()
