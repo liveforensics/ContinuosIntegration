@@ -2,8 +2,8 @@ echo 'welcome to my test pipeline'
 pipeline {
   agent any
     parameters {
-        string(name: 'GIT_PROJECT_NAME', defaultValue: 'empty', description: 'Which project would you like to build?')
-        string(name: 'GIT_BRANCH_NAME', defaultValue: 'Master', description: 'Which branch would you like to build?')
+        string(name: 'GIT_PROJECT_NAME', defaultValue: '', description: 'Which project would you like to build?')
+        string(name: 'GIT_BRANCH_NAME', defaultValue: 'master', description: 'Which branch would you like to build?')
         string(name: 'AUTHOR_NAME', defaultValue: 'wer', description: 'Please enter your name')
     }
   stages {
@@ -13,7 +13,7 @@ pipeline {
         echo "git url is ${GIT_BRANCH_NAME}"
         echo "author is ${AUTHOR_NAME}"
         cleanWs()
-        git branch: 'master', url: 'https://github.com/liveforensics/Terraform.git'
+        git branch: "${GIT_BRANCH_NAME}", url: "${GIT_PROJECT_NAME}"
       }
     }
     stage('Call Test') {
