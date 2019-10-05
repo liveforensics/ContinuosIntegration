@@ -47,7 +47,18 @@ services:
             - "50001:50000"      
         volumes:
             - /home/mark/docker/volumes/jenkins_home:/var/jenkins_home
-        
+            
+    LinuxSlave:
+        image: liveforensics/linuxslave:latest
+        container_name: LinuxSlave
+        hostname: linuxslave
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+
+
     # docker run -d --rm -p 10003:8080 -p 50000:50000 
     # -v jenkins_home:/var/jenkins_home 
     # --name jenkins 
