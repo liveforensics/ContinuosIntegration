@@ -1,6 +1,6 @@
 echo 'welcome to my test pipeline'
 pipeline {
-  agent none
+  agent any
 
   stages {
     stage('Gittery') {
