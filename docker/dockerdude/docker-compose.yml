@@ -52,6 +52,8 @@ services:
         image: liveforensics/linuxslave:latest
         container_name: LinuxSlave
         hostname: linuxslave
+        networks:
+            - nodeapp-network
         build:
             context: .
             dockerfile: Dockerfile
