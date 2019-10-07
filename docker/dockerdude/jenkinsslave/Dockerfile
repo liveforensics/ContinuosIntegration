@@ -15,16 +15,18 @@ RUN yum -y install java-11-openjdk git nano tree net-tools python2
 # RUN yum -y install git nano tree net-tools
 
 # Add user jenkins to the image
-# RUN adduser jenkins && \
+RUN adduser jenkins && \
 # Set password for the jenkins user (you may want to alter this).
-# echo "jenkins:jenkins" | chpasswd && \
-# mkdir /home/jenkins/.m2
+echo "jenkins:jenkins" | chpasswd && \
+mkdir /home/jenkins/.m2
 
 # ADD settings.xml /home/jenkins/.m2/
 COPY authorized_keys /root/.ssh/authorized_keys
+COPY authorized_keys /home/jenkins/.ssh/authorized_keys
 
-# RUN chown -R jenkins:jenkins /home/jenkins/.m2/ && \
-#     chown -R jenkins:jenkins /home/jenkins/.ssh/
+RUN chown -R jenkins:jenkins /home/jenkins/.m2/ && \
+    chown -R jenkins:jenkins /home/jenkins/.ssh/ && \
+    chmod -R go= /home/jenkins/.ssh
 
 # Standard SSH port
 EXPOSE 22
