@@ -50,7 +50,7 @@ services:
             - local-network
 
     Terraform:
-        image: liveforensics/terraform:1.0.0
+        image: liveforensics/terraform:12.10
         container_name: terraform
         hostname: terraform
         build:
@@ -60,7 +60,7 @@ services:
             - local-network
 
     Ansible:
-        image: liveforensics/ansible:1.0.0
+        image: liveforensics/ansible:2.4.2
         container_name: ansible
         hostname: ansible
         build:
