@@ -49,50 +49,6 @@ services:
         networks:
             - local-network
 
-
-    # docker run -d --rm -p 10003:8080 -p 50000:50000 
-    # -v jenkins_home:/var/jenkins_home 
-    # --name jenkins 
-    # jenkinsci/blueocean
-    # jenkins:
-    #     image: jenkinsci/blueocean
-    #     container_name: jenkins
-    #     networks:
-    #         - local-network
-    #     ports:
-    #         - "10003:8080"
-    #         - "50001:50000"
-    #     volumes:
-    #         - jenkins_home:/var/jenkins_home
-
-    # jenkinsreal:
-    #     image: jenkinsci/blueocean
-    #     container_name: jenkinsreal
-    #     networks:
-    #         - local-network
-    #     ports:
-    #         - "10008:8080"
-    #         - "50000:50000"
-    #     volumes:
-    #         - jenkinsreal_home:/var/jenkins_home            
-    # docker run --name splunk -d --rm -p 10002:8000 -p 10005:8088 
-    # -e 'SPLUNK_START_ARGS=--accept-license' -e 'SPLUNK_PASSWORD=murraykatt12345' 
-    # -v /data/splunk/etc:/opt/splunk/etc -v /data/splunk/var:/opt/splunk/var 
-    # splunk/splunk:latest
-    # splunk:
-    #     image: splunk/splunk:latest
-    #     container_name: splunk
-    #     networks:
-    #         - local-network
-    #     ports:
-    #         - "10002:8000"
-    #         - "10005:8088"
-    #     environment:
-    #         - SPLUNK_START_ARGS=--accept-license
-    #         - SPLUNK_PASSWORD=murraykatt12345
-    #     volumes:
-    #         - "/data/splunk/etc:/opt/splunk/etc"
-    #         - "/data/splunk/var:/opt/splunk/var"
                     
 networks:
     local-network:
