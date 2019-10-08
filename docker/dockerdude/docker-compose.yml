@@ -49,6 +49,26 @@ services:
         networks:
             - local-network
 
+    Terraform:
+        image: liveforensics/terraform:1.0.0
+        container_name: terraform
+        hostname: terraform
+        build:
+            context: .
+            dockerfile: /terraform/Dockerfile
+        networks:
+            - local-network
+
+    Ansible:
+        image: liveforensics/ansible:1.0.0
+        container_name: ansible
+        hostname: ansible
+        build:
+            context: .
+            dockerfile: /ansible/Dockerfile
+        networks:
+            - local-network
+
                     
 networks:
     local-network:
