@@ -18,8 +18,7 @@ RUN yum -y install java-11-openjdk git nano tree net-tools python2
 RUN adduser jenkins && \
 # Set password for the jenkins user (you may want to alter this).
 echo "jenkins:jenkins" | chpasswd && \
-mkdir /home/jenkins/.m2 && \
-mkdir /home/jenkins/jenkinsroot
+mkdir /home/jenkins/.m2 
 
 # ADD settings.xml /home/jenkins/.m2/
 COPY authorized_keys /root/.ssh/authorized_keys
