@@ -1,6 +1,16 @@
 FROM centos:7.5.1804
 
 # ADD epel.repo /etc/yum.repos.d/epel.repo
+ENV SPLUNK_PRODUCT universalforwarder
+ENV SPLUNK_VERSION 7.3.2
+ENV SPLUNK_BUILD c60db69f8e32
+ENV SPLUNK_FILENAME splunkforwarder-${SPLUNK_VERSION}-${SPLUNK_BUILD}-Linux-x86_64.tgz
+
+ENV SPLUNK_HOME /opt/splunk
+ENV SPLUNK_GROUP splunk
+ENV SPLUNK_USER splunk
+ENV SPLUNK_BACKUP_DEFAULT_ETC /var/opt/splunk
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN yum -y update
 
@@ -33,6 +43,12 @@ EXPOSE 22
 
 # set the root password
 RUN echo "root:test" | chpasswd
+
+RUN mkdir -p ${SPLUNK_HOME} \
+    && wget -qO /tmp/${SPLUNK_FILENAME} https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME} \
+    
+
+
 
 # set command to run
 CMD ["/usr/sbin/sshd", "-D"]
