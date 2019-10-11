@@ -44,15 +44,15 @@ EXPOSE 22
 # set the root password
 RUN echo "root:test" | chpasswd
 
-RUN mkdir -p ${SPLUNK_HOME} \
-    && wget -qO /tmp/${SPLUNK_FILENAME} https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME}
-RUN rpm -i /tmp/${SPLUNK_FILENAME}
-RUN mkdir /var/log/to_splunk
+RUN mkdir -p ${SPLUNK_HOME} && \
+    wget -qO /tmp/${SPLUNK_FILENAME} https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME} && \
+    rpm -i /tmp/${SPLUNK_FILENAME} && \
+    mkdir /var/log/to_splunk
 # RUN mkdir /opt/splunkforwarder/etc/system/local
 COPY inputs.conf /opt/splunkforwarder/etc/system/local/inputs.conf
 COPY outputs.conf /opt/splunkforwarder/etc/system/local/outputs.conf
-RUN systemctl enable splunk
-RUN service splunk start
+# RUN systemctl enable splunk
+# RUN service splunk start
 
 
 # set command to run
