@@ -20,7 +20,7 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 RUN sed -i "s/#UseDNS yes/UseDNS no/" /etc/ssh/sshd_config
 
 # install java
-RUN yum -y install java-11-openjdk git nano tree net-tools python2
+RUN yum -y install java-11-openjdk git nano tree net-tools python2 wget
 
 # RUN yum -y install git nano tree net-tools
 
