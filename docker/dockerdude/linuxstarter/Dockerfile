@@ -54,6 +54,7 @@ COPY outputs.conf /opt/splunkforwarder/etc/system/local/outputs.conf
 COPY user-seed.conf /opt/splunkforwarder/etc/system/local/user-seed.conf
 # RUN /opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --no-prompt
 COPY run.sh /bin/run.sh
+RUN chmod 755 /bin/run.sh
 
 
 # set command to run
