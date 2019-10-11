@@ -4,8 +4,8 @@ FROM centos:7.5.1804
 ENV SPLUNK_PRODUCT universalforwarder
 ENV SPLUNK_VERSION 7.3.2
 ENV SPLUNK_BUILD c60db69f8e32
-ENV SPLUNK_FILENAME splunkforwarder-${SPLUNK_VERSION}-${SPLUNK_BUILD}-Linux-x86_64.tgz
-
+# ENV SPLUNK_FILENAME splunkforwarder-${SPLUNK_VERSION}-${SPLUNK_BUILD}-Linux-x86_64.tgz
+ENV SPLUNK_FILENAME splunkforwarder-${SPLUNK_VERSION}-${SPLUNK_BUILD}-linux-2.6-x86_64.rpm
 ENV SPLUNK_HOME /opt/splunk
 ENV SPLUNK_GROUP splunk
 ENV SPLUNK_USER splunk
@@ -45,9 +45,14 @@ EXPOSE 22
 RUN echo "root:test" | chpasswd
 
 RUN mkdir -p ${SPLUNK_HOME} \
-    && wget -qO /tmp/${SPLUNK_FILENAME} https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME} \
-    
-
+    && wget -qO /tmp/${SPLUNK_FILENAME} https://download.splunk.com/products/${SPLUNK_PRODUCT}/releases/${SPLUNK_VERSION}/linux/${SPLUNK_FILENAME}
+RUN rpm -i /tmp/${SPLUNK_FILENAME}
+RUN mkdir /var/log/to_splunk
+RUN mkdir /opt/splunkforwarder/etc/system/local
+COPY inputs.conf /opt/splunkforwarder/etc/system/local/inputs.conf
+COPY outputs.conf /opt/splunkforwarder/etc/system/local/outputs.conf
+RUN systemctl enable splunk
+RUN service splunk start
 
 
 # set command to run
