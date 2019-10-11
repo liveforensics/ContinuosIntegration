@@ -51,8 +51,9 @@ RUN mkdir -p ${SPLUNK_HOME} && \
 # RUN mkdir /opt/splunkforwarder/etc/system/local
 COPY inputs.conf /opt/splunkforwarder/etc/system/local/inputs.conf
 COPY outputs.conf /opt/splunkforwarder/etc/system/local/outputs.conf
-# RUN systemctl enable splunk
-# RUN service splunk start
+COPY user-seed.conf /opt/splunkforwarder/etc/system/local/user-seed.conf
+RUN /opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --no-prompt
+
 
 
 # set command to run
