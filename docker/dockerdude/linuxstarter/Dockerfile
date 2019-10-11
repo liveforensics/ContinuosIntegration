@@ -53,8 +53,8 @@ COPY inputs.conf /opt/splunkforwarder/etc/system/local/inputs.conf
 COPY outputs.conf /opt/splunkforwarder/etc/system/local/outputs.conf
 COPY user-seed.conf /opt/splunkforwarder/etc/system/local/user-seed.conf
 # RUN /opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --no-prompt
-
+COPY run.sh /bin/run.sh
 
 
 # set command to run
-CMD ["/opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --no-prompt; /usr/sbin/sshd", "-D"]
+CMD ["/bin/run.sh"]
