@@ -52,9 +52,9 @@ RUN mkdir -p ${SPLUNK_HOME} && \
 COPY inputs.conf /opt/splunkforwarder/etc/system/local/inputs.conf
 COPY outputs.conf /opt/splunkforwarder/etc/system/local/outputs.conf
 COPY user-seed.conf /opt/splunkforwarder/etc/system/local/user-seed.conf
-RUN /opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --no-prompt
+# RUN /opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --no-prompt
 
 
 
 # set command to run
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --no-prompt; /usr/sbin/sshd", "-D"]
