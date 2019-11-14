@@ -2,7 +2,7 @@ version: '2'
 
 services:
     linuxstarter:
-        image: liveforensics/linuxstarter:1.0.0
+        image: liveforensics/linuxstarter:1.0.1
         container_name: linuxstarter
         build:
             context: .
