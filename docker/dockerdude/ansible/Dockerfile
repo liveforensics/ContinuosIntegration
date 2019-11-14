@@ -1,4 +1,4 @@
-FROM liveforensics/linuxstarter:1.0.0
+FROM liveforensics/linuxstarter:1.0.1
 
 RUN mkdir /home/jenkins/ansible
 
