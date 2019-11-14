@@ -55,6 +55,8 @@ COPY user-seed.conf /opt/splunkforwarder/etc/system/local/user-seed.conf
 # RUN /opt/splunkforwarder/bin/splunk start --accept-license --answer-yes --no-prompt
 COPY run.sh /bin/run.sh
 RUN chmod 755 /bin/run.sh
+# because stupid effing linux gets confused with line endings
+RUN sed -i -e 's/\r$//' /bin/run.sh
 
 
 # set command to run
