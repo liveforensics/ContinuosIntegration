@@ -14,7 +14,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN yum -y update
 
-RUN yum -y install openssh-server initscripts 
+RUN yum -y install openssh-server initscripts epel-release
 RUN /usr/sbin/sshd-keygen
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 RUN sed -i "s/#UseDNS yes/UseDNS no/" /etc/ssh/sshd_config
@@ -22,6 +22,7 @@ RUN sed -i "s/#UseDNS yes/UseDNS no/" /etc/ssh/sshd_config
 # install java
 RUN yum -y install java-11-openjdk git nano tree net-tools python2 wget python-pip
 
+RUN pip install --upgrade pip
 # RUN yum -y install git nano tree net-tools
 
 # Add user jenkins to the image
