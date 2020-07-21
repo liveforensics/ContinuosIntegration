@@ -1,0 +1,26 @@
+pipeline {
+    agent {
+        node {
+            label 'LinuxOne'
+        }
+    }
+    stages {
+        stage('Preparation') {
+            steps {
+                git 'https://github.com/bozkurthan/Simple-TCP-Server-Client-CPP-Example.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                
+            
+            script {
+                
+                sh 'g++ tcp-Server.cpp -o server'
+                sh 'g++ tcp-Client.cpp -o client'
+            }
+            }
+        }
+    }
+    
+}
