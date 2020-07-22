@@ -14,10 +14,11 @@ pipeline {
             steps {
                 echo 'do some build magic'
                 script {
+                    powershell 'pwd'
                     bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat && msbuild.exe' 
                 }
                 // bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
-                powershell 'pwd'
+                
 
                 // powershell 'msbuild --version'
             
