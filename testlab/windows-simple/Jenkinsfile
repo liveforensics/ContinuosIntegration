@@ -17,7 +17,7 @@ pipeline {
                     bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat && msbuild.exe' 
                 }
                 // bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
-                // powershell '$env:path -split ";"'
+                powershell 'pwd'
 
                 // powershell 'msbuild --version'
             
