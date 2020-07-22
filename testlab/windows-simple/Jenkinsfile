@@ -13,10 +13,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'do some build magic'
-                bat 'C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
+                bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
                 powershell '$env:path -split ";"'
 
-                powershell 'dir env:'
+                powershell 'msbuild --version'
             
             }
         }
