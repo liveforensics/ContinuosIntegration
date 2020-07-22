@@ -13,6 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'do some build magic'
+                bat 'C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
             
             
             }
