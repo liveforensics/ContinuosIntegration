@@ -17,7 +17,7 @@ pipeline {
                 echo 'do some build magic'
                 dir('VC2015Samples\\scribble') {                    
                     script {                    
-                        bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat && msbuild.exe scribble.sln' 
+                        bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat && msbuild.exe scribble.sln /p:Configuration=Debug /p:Platform=x64' 
                     }
                 }
                 
