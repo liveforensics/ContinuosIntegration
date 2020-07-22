@@ -8,19 +8,19 @@ pipeline {
         stage('Preparation') {
             steps {
                 git 'https://github.com/microsoft/VCSamples.git'
-                dir('VC2015Samples\\scribble') {
-                    powershell '$loc = get-location; write-host "LOCATION: " $loc'
-                }
+                
                 
             }
         }
         stage('Builder') {
             steps {
                 echo 'do some build magic'
-                script {
-                    
-                    bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat && msbuild.exe' 
+                dir('VC2015Samples\\scribble') {                    
+                    script {                    
+                        bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat && msbuild.exe scribble.sln' 
+                    }
                 }
+                
                 // bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
                 
 
