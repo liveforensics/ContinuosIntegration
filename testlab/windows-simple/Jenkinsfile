@@ -10,7 +10,7 @@ pipeline {
                 git 'https://github.com/microsoft/VCSamples.git'
             }
         }
-        stage('Build') {
+        stage('Builder') {
             steps {
                 echo 'do some build magic'
                 script {
