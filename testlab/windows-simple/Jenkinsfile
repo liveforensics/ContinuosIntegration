@@ -14,7 +14,8 @@ pipeline {
             steps {
                 echo 'do some build magic'
                 bat 'C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
-                bat './msbuild.exe --version'
+                powershell '$env:path -split ";"'
+                powershell './msbuild.exe --version'
             
             }
         }
