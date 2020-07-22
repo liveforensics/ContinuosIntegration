@@ -8,7 +8,10 @@ pipeline {
         stage('Preparation') {
             steps {
                 git 'https://github.com/microsoft/VCSamples.git'
-                powershell '$loc = get-location; write-host "LOCATION: " $loc'
+                dir('VC2015Samples\\scribble') {
+                    powershell '$loc = get-location; write-host "LOCATION: " $loc'
+                }
+                
             }
         }
         stage('Builder') {
