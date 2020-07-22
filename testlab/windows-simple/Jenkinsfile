@@ -8,7 +8,7 @@ pipeline {
         stage('Preparation') {
             steps {
                 git 'https://github.com/microsoft/VCSamples.git'
-                powershell 'get-location'
+                powershell '$loc = get-location; write-host "LOCATION: " $loc'
             }
         }
         stage('Builder') {
