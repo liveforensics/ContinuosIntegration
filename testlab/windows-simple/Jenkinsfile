@@ -8,13 +8,14 @@ pipeline {
         stage('Preparation') {
             steps {
                 git 'https://github.com/microsoft/VCSamples.git'
+                powershell 'get-location'
             }
         }
         stage('Builder') {
             steps {
                 echo 'do some build magic'
                 script {
-                    powershell 'pwd'
+                    
                     bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat && msbuild.exe' 
                 }
                 // bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
