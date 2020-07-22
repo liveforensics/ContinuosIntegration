@@ -1,0 +1,22 @@
+pipeline {
+    agent {
+        node {
+            label 'WindowsOne'
+        }
+    }
+    stages {
+        stage('Preparation') {
+            steps {
+                git 'https://github.com/microsoft/VCSamples.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                
+            
+            
+            }
+        }
+    }
+    
+}
