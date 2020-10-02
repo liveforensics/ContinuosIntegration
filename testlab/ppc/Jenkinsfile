@@ -15,7 +15,7 @@ pipeline {
         stage('Builder') {
             steps {                  
                 script {
-                    def msg = powershell(returnStdout: true, script: 'Write-Output "PowerShell is mighty!"')
+                    def msg = powershell(returnStdout: true, script: '.\python.exe --version')
                     println msg
                 }                 
                 
