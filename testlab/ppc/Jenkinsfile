@@ -1,0 +1,33 @@
+pipeline {
+    agent {
+        node {
+            label 'ppc'
+        }
+    }
+    stages {
+        stage('Preparation') {
+            steps {
+                echo 'do some prep'
+                
+                
+            }
+        }
+        stage('Builder') {
+            steps {
+                echo 'do some build magic'
+                             
+                script {                    
+                    bat '.\python --version' 
+                }
+                
+                
+                // bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
+                
+
+                // powershell 'msbuild --version'
+            
+            }
+        }
+    }
+    
+}
