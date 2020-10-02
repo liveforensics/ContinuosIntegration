@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Builder') {
             steps {
-                step('first') {
+                step {
                     echo 'do some build magic'
                     def msg = powershell(returnStdout: true, script: 'Write-Output "PowerShell is mighty!"')
                     println msg
