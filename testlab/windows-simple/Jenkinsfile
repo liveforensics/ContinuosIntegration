@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'WindowsOne'
+            label 'buildtools2019'
         }
     }
     stages {
