@@ -17,7 +17,7 @@ pipeline {
                 echo 'do some build magic'
                              
                 script {                    
-                    powershell '.\python --version' 
+                    powershell './python.exe --version' 
                 }
                 
                 
