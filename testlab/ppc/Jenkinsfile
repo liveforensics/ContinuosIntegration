@@ -17,6 +17,8 @@ pipeline {
                 script {
                     def msg = powershell(returnStdout: true, script: 'python --version')
                     println msg
+                    msg = powershell(returnStdout: true, script: 'powerpc-eabi-gcc-4.9.0.exe')
+                    println msg
                 }                 
                 
                                                                                            
