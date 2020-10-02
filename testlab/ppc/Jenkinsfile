@@ -15,10 +15,9 @@ pipeline {
         stage('Builder') {
             steps {
                 echo 'do some build magic'
-                             
-                script {                    
-                    powershell './python.exe --version' 
-                }
+                def msg = powershell(returnStdout: true, script: 'Write-Output "PowerShell is mighty!"')
+                println msg
+                
                 
                 
                 // bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
