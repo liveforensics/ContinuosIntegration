@@ -13,21 +13,13 @@ pipeline {
             }
         }
         stage('Builder') {
-            steps {
-                step {
-                    echo 'do some build magic'
+            steps {                  
+                script {
                     def msg = powershell(returnStdout: true, script: 'Write-Output "PowerShell is mighty!"')
                     println msg
-                }
+                }                 
                 
-                
-                
-                
-                // bat 'call C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat'
-                
-
-                // powershell 'msbuild --version'
-            
+                                                                                           
             }
         }
     }
